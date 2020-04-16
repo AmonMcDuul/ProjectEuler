@@ -10,25 +10,20 @@
 #NOTE: Once the chain starts the terms are allowed to go above one million.
 
 result = []
-numbers = list(range(101))
-for n in numbers:
-    a = 0 
-    begin = n
-    # We simply follow steps 
-    # while we do not reach 1 
+numbers = list(range(1000000))
+
+def collatzSequence(n): 
+    a=0  
     while n != 1: 
-        #print(n, end = ' ') 
-  
-        # If n is odd  
         if n & 1: 
             n = 3 * n + 1
-            a = a + 1
-        # If even  
+            a= a+1
         else: 
             n = n // 2
-            a = a + 1
-    # Print 1 at the end  
-    result.append(a)
-print (result)
+            a= a+1
+    return(a)
 
-#print (max(list(map(int, result))))  
+for i in numbers:
+    result.append(collatzSequence(i+1))
+index = result.index(max(list(map(int, result))))+1
+print ("The highest chain is: ",(max(list(map(int, result)))), ". This chain belongs to number: ", index)
