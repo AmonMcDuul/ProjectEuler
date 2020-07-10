@@ -7,11 +7,10 @@ from math import factorial
 number = 0
 
 for i in range(3,100000):
-    s = str(i)
     result = 0
-    for item in s:
+    for item in str(i):
         result += factorial(int(item))
-        if result == int(s):
+        if result == i:
             number += result
     
 print("Result is: ", number)
