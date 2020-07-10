@@ -25,7 +25,7 @@ numbers = sieveOfEratosthenes(1000000)
 lijstje = []
 result = 0
 n = 0
-for i in numbers:
+for i in numbers[4:]:
     count = 0
     for j in range(len(str(i))):
         numLeft = (str(i)[:-j])
