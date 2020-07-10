@@ -2,6 +2,8 @@
 # Find the sum of the only eleven primes that are both truncatable from left to right and right to left.
 # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
+import sys
+
 def sieveOfEratosthenes(n): 
     prime = [True for i in range(n + 1)] 
     p = 2
@@ -22,6 +24,7 @@ numbers = sieveOfEratosthenes(1000000)
 
 lijstje = []
 result = 0
+n = 0
 for i in numbers:
     count = 0
     for j in range(len(str(i))):
@@ -37,7 +40,10 @@ for i in numbers:
                 if count == lengte-1:
                     print("Succes bitches!",i)
                     result += i
+                    n+=1
+                    if n == 11:
+                        print(result)
+                        sys.exit()
             else:
                 break
     lijstje.clear()
-print(result-2-3-5-7)
