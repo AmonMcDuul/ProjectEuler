@@ -16,15 +16,14 @@ superResult = 0
 
 for i in permutations(number):
     count = 0
-    workingNumber = i[0] + i[1] + i[2] + i[3] + i[4] + i[5] + i[6] + i[7] + i[8] + i[9]
-    sum1 = i[1] + i[2] + i[3]
-    sum2 = i[2] + i[3] + i[4]
-    sum3 = i[3] + i[4] + i[5]
-    sum4 = i[4] + i[5] + i[6]
-    sum5 = i[5] + i[6] + i[7]
-    sum6 = i[6] + i[7] + i[8]
-    sum7 = i[7] + i[8] + i[9]
-    if int(sum1) % 2 == 0 and int(sum2) % 3 == 0 and int(sum3) % 5 == 0 and int(sum4) % 7 == 0 and int(sum5) % 11 == 0 and int(sum6) % 13 == 0 and int(sum7) % 17 == 0:
+    workingNumber = int(''.join(i[0:10]))
+    if (int(''.join(i[1:4])) % 2 == 0 and 
+        int(''.join(i[2:5])) % 3 == 0 and 
+        int(''.join(i[3:6])) % 5 == 0 and 
+        int(''.join(i[4:7])) % 7 == 0 and 
+        int(''.join(i[5:8])) % 11 == 0 and 
+        int(''.join(i[6:9])) % 13 == 0 and 
+        int(''.join(i[7:10])) % 17 == 0):
         superResult += int(workingNumber)
-        print("we have got one: ", workingNumber)
-print(superResult)
+        print("pandigital numbers with this property: ", workingNumber)
+print("total sum: ", superResult)
