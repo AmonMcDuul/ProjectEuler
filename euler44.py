@@ -2,3 +2,18 @@
 # 1, 5, 12, 22, 35, 51, 70, 92, 117, 145, ...
 # It can be seen that P4 + P7 = 22 + 70 = 92 = P8. However, their difference, 70 − 22 = 48, is not pentagonal.
 # Find the pair of pentagonal numbers, Pj and Pk, for which their sum and difference are pentagonal and D = |Pk − Pj| is minimised; what is the value of D?
+
+import sys
+
+numberList = []
+for num in range(1,2500):
+    number = num*(3*num-1)//2
+    numberList.append(number)
+
+for n in numberList:
+    for i in numberList:
+        x = n + i
+        d = i - n
+        if d in numberList and x in numberList:
+            print("D: ", d)
+            sys.exit()
