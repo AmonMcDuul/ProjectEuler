@@ -42,31 +42,31 @@ for i in range(0,1220):
                 c = str(priemTwee) + str(priemDrie)
                 d = str(priemDrie) + str(priemTwee)
                 if int(a) in numberLarge and int(b) in numberLarge and int(c) in numberLarge and int(d) in numberLarge:
-                        for l in range(k,1220):
-                            priemVier = numbers[l]
-                            a = str(priemEen) + str(priemVier)
-                            b = str(priemVier) + str(priemEen)
-                            c = str(priemTwee) + str(priemVier)
-                            d = str(priemVier) + str(priemTwee)
-                            e = str(priemDrie) + str(priemVier)
-                            f = str(priemVier) + str(priemDrie)
-                            if int(a) in numberLarge and int(b) in numberLarge and int(c) in numberLarge and int(d) in numberLarge and int(e) in numberLarge and int(f) in numberLarge:
-                                        for m in range(l,1220):
-                                            priemVijf = numbers[m]
-                                            a = str(priemEen) + str(priemVijf)
-                                            b = str(priemVijf) + str(priemEen)
-                                            c = str(priemTwee) + str(priemVijf)
-                                            d = str(priemVijf) + str(priemTwee)
-                                            e = str(priemDrie) + str(priemVijf)
-                                            f = str(priemVijf) + str(priemDrie)
-                                            g = str(priemVier) + str(priemVijf)
-                                            h = str(priemVijf) + str(priemVier)
-                                            if int(a) in numberLarge and int(b) in numberLarge and int(c) in numberLarge and int(d) in numberLarge and int(e) in numberLarge and int(f) in numberLarge and int(g) in numberLarge and int(h) in numberLarge:
-                                                            if priemVier != priemVijf:
-                                                                print("resultaat: ", priemEen, priemTwee, priemDrie, priemVier, priemVijf)
-                                                                x = priemEen + priemTwee + priemDrie + priemVier + priemVijf
-                                                                print("sum: ", x)
-                                                                if x < superResult:
-                                                                    superResult = x
-                                                                    print("    kleinste result tot nu toe: ", superResult, " with numbers: ", priemEen, priemTwee, priemDrie, priemVier, priemVijf)
+                    for l in range(k,1220):
+                        priemVier = numbers[l]
+                        a = str(priemEen) + str(priemVier)
+                        b = str(priemVier) + str(priemEen)
+                        c = str(priemTwee) + str(priemVier)
+                        d = str(priemVier) + str(priemTwee)
+                        e = str(priemDrie) + str(priemVier)
+                        f = str(priemVier) + str(priemDrie)
+                        if int(a) in numberLarge and int(b) in numberLarge and int(c) in numberLarge and int(d) in numberLarge and int(e) in numberLarge and int(f) in numberLarge:
+                            for m in range(l,1220):
+                                priemVijf = numbers[m]
+                                a = str(priemEen) + str(priemVijf)
+                                b = str(priemVijf) + str(priemEen)
+                                c = str(priemTwee) + str(priemVijf)
+                                d = str(priemVijf) + str(priemTwee)
+                                e = str(priemDrie) + str(priemVijf)
+                                f = str(priemVijf) + str(priemDrie)
+                                g = str(priemVier) + str(priemVijf)
+                                h = str(priemVijf) + str(priemVier)
+                                if int(a) in numberLarge and int(b) in numberLarge and int(c) in numberLarge and int(d) in numberLarge and int(e) in numberLarge and int(f) in numberLarge and int(g) in numberLarge and int(h) in numberLarge:
+                                    if priemVier != priemVijf:
+                                        print("resultaat: ", priemEen, priemTwee, priemDrie, priemVier, priemVijf)
+                                        x = priemEen + priemTwee + priemDrie + priemVier + priemVijf
+                                        print("sum: ", x)
+                                        if x < superResult:
+                                            superResult = x
+                                            print("    kleinste result tot nu toe: ", superResult, " with numbers: ", priemEen, priemTwee, priemDrie, priemVier, priemVijf)
 print("Result: ", superResult)
