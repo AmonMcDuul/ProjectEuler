@@ -1,17 +1,4 @@
-import sys
-
-trihex = []
-
-for n in range(40755,100000):
-    trinumber = (n*(n+1))/2
-    indexhex = trinumber/n
-    if indexhex.is_integer() == True:
-        if indexhex * (2*indexhex - 1) == trinumber:
-            trihex.append([int(trinumber),int(n),int(indexhex)])
-
-for number in trihex:
-    if number[0] > 40755:
-        for x in range(number[2],number[1]):
-            if number[0] == (x*(3*x-1))/2:
-                    print(number[0])
-                    sys.exit()
+Diamonds= ['1D','2D','3D','4D',"5D",'6D','7D','8D','9D']
+Spades = ['1S','2S','3S','4S',"S5",'6S','7S','8S','9S']
+Jacks = ['1J','2J','3J','4J',"J5",'6J','7J','8J','9J']
+Hearts = ['1H','2H','3H','4H',"5H",'6H','7H','8H','9H']
