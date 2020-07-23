@@ -1,62 +1,49 @@
+# Starting with 1 and spiralling anticlockwise in the following way, a square spiral with side length 7 is formed.
+# 37 36 35 34 33 32 31
+# 38 17 16 15 14 13 30
+# 39 18  5  4  3 12 29
+# 40 19  6  1  2 11 28
+# 41 20  7  8  9 10 27
+# 42 21 22 23 24 25 26
+# 43 44 45 46 47 48 49
+# It is interesting to note that the odd squares lie along the bottom right diagonal,
+#  but what is more interesting is that 8 out of the 13 numbers lying along both diagonals are prime; that is, a ratio of 8/13 ≈ 62%.
+# If one complete new layer is wrapped around the spiral above, a square spiral with side length 9 will be formed. If this process is continued, 
+# what is the side length of the square spiral for which the ratio of primes along both diagonals first falls below 10%?
 
-import sys
+def isPrime(n):
+    if (n <= 1):
+        return False
+    if (n <= 3):
+        return True
+    if (n % 2 == 0 or n % 3 == 0):
+        return False
+    i = 5
+    while(i * i <= n):
+        if (n % i == 0 or n % (i + 2) == 0):
+            return False
+        i = i + 6
+    return True
 
-def sieveOfEratosthenes(n): 
-    prime = [True for i in range(n + 1)] 
-    p = 2
-    primeList = []
-    while (p * p <= n): 
-        if (prime[p] == True): 
-            for i in range(p * 2, n + 1, p): 
-                prime[i] = False
-        p += 1
-    prime[0]= False
-    prime[1]= False
-    for p in range(n + 1): 
-        if prime[p]: 
-           primeList.append(p)
-    return primeList
+num = 0
+step = 1
+ratio = 100
+primes = 0
+allNumbers = 0
+size = 1
+count = 0
 
-numbers = set(sieveOfEratosthenes(1000000))
-
-for i in range(5000,5001):
-    lastNumber = i*i
-    numbers = []
-    elem = 0
-    result = 1
-    count=0
-    primes = set()
-    begin = 4
-    skip = 0
-    size = 3
-    minus = 0
-
-    for item in range(1,lastNumber+1,2):
-        numbers.append(item)
-    for btem in range(1,lastNumber):
-        if btem in numbers:
-            primes.add(btem)
-    for times in range(1,1000000,1):
-        if times % 100 == 0:
-            print(times, minus, result+1)
-        try: 
-            if count > 3:
-                skip += 1
-                count = 0
-                size +=1
-            if count <= begin:
-                elem += skip
-                minus +=1
-                if numbers[times+elem] in primes:
-                    result+=1 
-                    minus+=1
-                    # print(numbers[times+elem])
-            count+=1
-            if result*10 < minus:
-                print("Dit issemmm", i)
-                sys.exit()
-        except:
-            break
-    # print(len(primes), result+1)
-    print (result +1, '<result minus>  ', minus, "   i:" , i)
-        
+while ratio > 10:
+    if count < 4:
+        num += step
+        number = 2 * num + 1
+        allNumbers += 1
+        if isPrime(number):
+            primes += 1   
+        count += 1
+    else:
+        ratio = primes / allNumbers * 100
+        step += 1
+        size += 2
+        count = 0
+print(size)

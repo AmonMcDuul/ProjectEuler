@@ -86,5 +86,5 @@ for item in cards:
         p2.append(x[15:])
     print(p1,  p2)
     for i in range(1,13):
-        if C[i] in str(x):
-            print("farts") 
+        if C[1] in str(x):
+            print("farts", x) 
