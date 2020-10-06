@@ -1,4 +1,4 @@
-# Consider all integer combinations of ab for 2 ≤ a ≤ 5 and 2 ≤ b ≤ 5:
+#nsider all integer combinations of ab for 2 ≤ a ≤ 5 and 2 ≤ b ≤ 5:
 
 #     22=4, 23=8, 24=16, 25=32
 #     32=9, 33=27, 34=81, 35=243
