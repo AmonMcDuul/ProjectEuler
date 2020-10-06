@@ -2,21 +2,22 @@
 # In fact, 41063625 is the smallest cube which has exactly three permutations of its digits which are also cube.
 # Find the smallest cube for which exactly five permutations of its digits are cube.
 
-from itertools import permutations
 
-cubes = set()
+import sys
 
-def is_cube(n):
-    cube_root = n**(1./3.)
-    if round(cube_root) ** 3 == n:
-        cubes.add(n)
-    else:
-        return False
+cubes = list()
+probeersel = list()
 
-def permutated_numbers(y):
-    return [''.join(i) for i in permutations(y)]
-
-for i in range(100000000,1000000000):
-    is_cube(i)
-
-print(cubes)
+for i in range(1 ,8501):
+    result = (i**3)
+    b = "".join(sorted(str(result)))
+    cubes.append(b)
+    probeersel.append(str(b) + " " + str(result))
+    if i % 8500  == 0:
+        for element in cubes:
+            if cubes.count(element) == 5:
+                print("Result is: ", element)
+                for i in probeersel:
+                    if (str(element) in i):
+                        print(i)
+                        sys.exit()
