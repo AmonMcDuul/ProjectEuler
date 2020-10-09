@@ -4,23 +4,44 @@
 # It can be seen that there are 21 elements in this set.
 # How many elements would be contained in the set of reduced proper fractions for d ≤ 1,000,000?
 
-from fractions import Fraction
+def phi(n):    
+    result = n
+    p = 2
+    while(p * p <= n):
+        if (n % p == 0):              
+            while (n % p == 0):
+                n = int(n / p)
+            result -= int(result / p)
+        p += 1
+    if (n > 1):
+        result -= int(result / n)
+    return result
 
-count = 0
-for i in range(1,1000000):
-    num = set()
-    if i < 500001:
-        num.add(i)
-    if i % 100 == 0:
-        print("status: ", i)
-    for j in range(1,1000000):
-        dum = set()
-        if j < 500001:
-            dum.add(j)
-        if i < j:
-            for n in num:
-                for d in dum:
-                    if i % n == 0 and j % d == 0:
-                        break
-                count+=1
-print(count)
+result = 0
+for i in range(2, 1000001):
+    result += phi(i)
+
+print(result)
+
+
+# bruteforce shitzle
+# 
+# from fractions import Fraction
+# count = 0
+# for i in range(1,1000000):
+#     num = set()
+#     if i < 500001:
+#         num.add(i)
+#     if i % 100 == 0:
+#         print("status: ", i)
+#     for j in range(1,1000000):
+#         dum = set()
+#         if j < 500001:
+#             dum.add(j)
+#         if i < j:
+#             for n in num:
+#                 for d in dum:
+#                     if i % n == 0 and j % d == 0:
+#                         break
+#                 count+=1
+# print(count)
