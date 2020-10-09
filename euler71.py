@@ -4,20 +4,19 @@
 # It can be seen that 2/5 is the fraction immediately to the left of 3/7.
 # By listing the set of reduced proper fractions for d ≤ 1,000,000 in ascending order of size, find the numerator of the fraction immediately to the left of 3/7.
 
-
-# nog rommelig
-
 from fractions import Fraction
 
-fractions = set()
+# fractions = set()
 
-for n in range(428570,428572):
-    for d in range(1,1000000):
-        if d/2 > n and d/2.4 < n:
-            slope = Fraction(n, d)
-            if float(slope) < 0.42857142857142860:
-                if float(slope) > 0.42756142857142855:
-                    result = float(slope), slope
-                    fractions.add(result)
-                    print(float(slope), slope)
-print(sorted(fractions))
+# for n in range(428570,428572):
+#     for d in range(1,1000000):
+#         if d/2 > n and d/2.4 < n:
+#             slope = Fraction(n, d)
+#             if float(slope) < 0.42857142857142860:
+#                 if float(slope) > 0.42756142857142855:
+#                     result = float(slope), slope
+#                     fractions.add(result)
+#                     print(float(slope), slope)
+# print(sorted(fractions))
+
+print(int(1000000 * float(Fraction(3,7))-1))
