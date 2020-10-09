@@ -4,3 +4,19 @@
 # It can be seen that there are 3 fractions between 1/3 and 1/2.
 # How many fractions lie between 1/3 and 1/2 in the sorted set of reduced proper fractions for d ≤ 12,000?
 
+from fractions import Fraction
+
+upper = float(Fraction(1,2))
+lower = float(Fraction(1,3))
+count = 0
+
+setje = set()
+
+for n in range(1,6001):
+    if n % 1000 == 0:
+        print(n)
+    for d in range(2,12001):
+        if n <= d/2:
+            if lower < float(Fraction(n,d)) < upper:
+                setje.add(float(Fraction(n,d)))
+print(len(setje))
