@@ -47,47 +47,344 @@
 # How many hands does Player 1 win?
 
 #     Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
-RoyalFlush = []
+
 #     Straight Flush: All cards are consecutive values of same suit.
-StraightFlush = []
+
 #     Four of a Kind: Four cards of the same value.
-FourOfAKind = []
+
 #     Full House: Three of a kind and a pair.
-FullHouse = []
+
 #     Flush: All cards of the same suit.
-Flush = []
+
 #     Straight: All cards are consecutive values.
-Straight = []
+
 #     Three of a Kind: Three cards of the same value.
-ThreeOfAKind = []
+
 #     Two Pairs: Two different pairs.
-TwoPairs = []
+
 #     One Pair: Two cards of the same value.
-OnePair = []
+
 #     High Card: Highest value card.
-HighCard = []
 
-# D = ['TD','2D','3D','4D',"5D",'6D','7D','8D','9D','JD','QD','KD','AD']
-# S = ['TS','2S','3S','4S',"S5",'6S','7S','8S','9S','JS','QS','KS','AS']
-# C = ['TC','2C','3C','4C',"C5",'6C','7C','8C','9C','JC','QC','KC','AC']
-# H = ['TH','2H','3H','4H',"5H",'6H','7H','8H','9H','JH','QH','KH','AH']
+ranks = {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'T':10,'J':11,'Q':12,'K':13,'A':14}
 
-suits = ['D','S','C','H']
+tie = 0
+pOne = 0
+pTwo = 0
 
 def checkCard(one,two):
-    royalFlush(one,two)
-    #for i in one:
-        #print(i[1:2])
-    return
+    global tie
+    global pOne
+    global pTwo
 
-def royalFlush(one,two):
-    flush = ['T','J','Q','K','A']
+    if royalFlush(one):
+        if royalFlush(two):
+            tie+=1
+            return
+        pOne+=1
+        return
+    if royalFlush(two):
+        pTwo+=1
+        return
+
+    if straightFlush(one):
+        if straightFlush(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+    if straightFlush(two):
+        pTwo+=1
+        return
+
+    if fourOfAKind(one):
+        if fourOfAKind(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+    if fourOfAKind(two):
+        pTwo+=1
+        return
+
+    if fullHouse(one):
+        if fullHouse(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+    if fullHouse(two):
+        pTwo+=1
+        return 
+
+    if flush(one):
+        if flush(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+    if flush(two):
+        pTwo+=1
+        return 
+
+    if straight(one):
+        if straight(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+    if straight(two):
+        pTwo+=1
+        return 
+
+    if threeOfAKind(one):
+        if threeOfAKind(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+    if threeOfAKind(two):
+        pTwo+=1
+        return 
+
+    if twoPairs(one):
+        if twoPairs(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+    if twoPairs(two):
+        pTwo+=1
+        return
+
+    if onePair(one):
+        if onePair(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+    if onePair(two):
+        pTwo+=1
+        return
+
+    if highCard(one):
+        if highCard(two):
+            if points(one,two) == 0:
+                tie+=1
+                return
+            if points(one,two) == 1:
+                pOne+=1
+                return
+            if points(one,two) == 2:
+                pTwo+=1
+                return
+        pOne+=1
+        return
+
+def royalFlush(n):
+    x = set()
+    s = set()
+    for i in n:
+        x.add(i[:1])
+        s.add(i[1:2])
+    if set(['T', 'J', 'Q', 'K', 'A']) == x:
+        if len(s) == 1:
+            return True
+
+def straightFlush(n):
+    x = set()
+    s = set()
+    f = 16
+    l = 0
+    for i in n:
+        res = ranks[i[:1]]
+        if f > res:
+            f = res 
+        if l < res:
+            l = res
+        s.add(i[1:2])
+    r = l - f
+    if len(s) == 1:
+        if r == 4:
+            return True
+
+def fourOfAKind(n):
+    d = []
+    for i in sorted(n):
+        d.append(i[:1]) 
+    dupl = {i:d.count(i) for i in d}
+    for i in dupl:
+        if dupl[i] == 4:
+            return True
+
+def fullHouse(n):
+    l = set()
     count = 0
-    for i in two:
-        if i[0:1] in flush:
-            count +=1 
-            if count == 5:
-                print(two)
+    for i in sorted(n):
+        l.add(i[:1])
+    if len(l) == 2:
+        return True   
+
+def flush(n):
+    s = set()
+    for i in n:
+        s.add(i[1:2])
+    if len(s) == 1:
+        return True
+
+def straight(n):
+    x = set()
+    f = 16
+    l = 0
+    for i in n:
+        res = ranks[i[:1]]
+        if f > res:
+            f = res 
+        if l < res:
+            l = res
+        x.add(i[:1])
+    r = l - f
+    if len(x) == 5:
+        if r == 4:
+            return True
+
+def threeOfAKind(n):
+    d = []
+    for i in sorted(n):
+        d.append(i[:1]) 
+    dupl = {i:d.count(i) for i in d}
+    for i in dupl:
+        if dupl[i] == 3:
+            return True
+
+def twoPairs(n):
+    l = set()
+    for i in sorted(n):
+        l.add(i[:1])
+    if len(l) == 3:
+        return True
+
+def onePair(n):
+    l = set()
+    for i in sorted(n):
+        l.add(i[:1])
+    if len(l) == 4:
+        return True
+
+def highCard(n):
+    card = 0
+    for i in n:
+        x = ranks[i[:1]]
+        if card < x:
+            card = x
+    return True
+
+def points(one, two):
+    d = []
+    e = []
+    result = 0
+    for i in one:
+        d.append(ranks[i[:1]])
+    for j in two:
+        e.append(ranks[j[:1]])
+    countOne = {k:d.count(k) for k in d}
+    countTwo = {l:e.count(l) for l in e}
+    q = max(d.count(k) for k in d)
+    w = max(e.count(k) for k in e)
+    if q <= w:
+        r = w
+    else:
+        r = q
+    first = dupliPoints(countOne,r)
+    second = dupliPoints(countTwo,r)
+    if first < second:
+        result = 2
+    elif first == second:
+        r -= 1
+        first = dupliPoints(countOne,r)
+        second = dupliPoints(countTwo,r)
+        if first < second:
+            result = 2
+        elif first == second:
+            r -= 1
+            first = dupliPoints(countOne,r)
+            second = dupliPoints(countTwo,r)
+            if first < second:
+                result = 2
+            elif first == second:
+                return 0
+            else:
+                result = 1
+        else:
+            result = 1
+    else:
+        result = 1
+    return result
+
+def dupliPoints(n,t):
+    highOne = 0  
+    for x in n:
+        if n[x] == t:
+            if highOne < x:
+                highOne = x
+    return highOne
+
 
 
 cards = []
@@ -102,5 +399,6 @@ for item in cards:
     for x in item:
         one = (x[:14].strip().split(' '))
         two = (x[15:].strip().split(' '))
-        #print(one, two)
         checkCard(one,two)
+
+print('Tie:', tie,   'P1:', pOne,   'P2:', pTwo)
