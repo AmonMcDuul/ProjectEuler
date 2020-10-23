@@ -266,7 +266,7 @@ def straightFlush(n):
 
 def fourOfAKind(n):
     d = []
-    for i in sorted(n):
+    for i in n:
         d.append(i[:1]) 
     dupl = {i:d.count(i) for i in d}
     for i in dupl:
@@ -276,7 +276,7 @@ def fourOfAKind(n):
 def fullHouse(n):
     l = set()
     count = 0
-    for i in sorted(n):
+    for i in n:
         l.add(i[:1])
     if len(l) == 2:
         return True   
@@ -306,7 +306,7 @@ def straight(n):
 
 def threeOfAKind(n):
     d = []
-    for i in sorted(n):
+    for i in n:
         d.append(i[:1]) 
     dupl = {i:d.count(i) for i in d}
     for i in dupl:
@@ -315,14 +315,14 @@ def threeOfAKind(n):
 
 def twoPairs(n):
     l = set()
-    for i in sorted(n):
+    for i in n:
         l.add(i[:1])
     if len(l) == 3:
         return True
 
 def onePair(n):
     l = set()
-    for i in sorted(n):
+    for i in n:
         l.add(i[:1])
     if len(l) == 4:
         return True
