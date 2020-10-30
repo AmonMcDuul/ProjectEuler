@@ -3,10 +3,8 @@
 # Using base_exp.txt (right click and 'Save Link/Target As...'), a 22K text file containing one thousand lines with a base/exponent pair on each line, determine which line number has the greatest numerical value.
 # NOTE: The first two lines in the file represent the numbers in the example given above.
 
-import numpy
 import math
 
-c=[]
 result = 0
 count = 0
 line = 0

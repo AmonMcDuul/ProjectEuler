@@ -7,29 +7,32 @@
 # How many starting numbers below ten million will arrive at 89?
 
 count = 0
-for i in range(20,1000):
-    if i % 10 == 0:
+for i in range(1,10000000):
+    if i % 10000 == 0:
         print('Tussenstandje: ', i)
     control = i
-    loop = True
-    n = 0
     s = set()
     s.clear()
-    c = 0
+    loop = True
     while loop:
-        l = len(str(i))
         if i == 89:
             count +=1
+            loop = False
+        if i == 1:
+            loop = False
+        i = str(i).replace('0', '')
+        l = len(str(i))
+        c = 0
+        n = 0
         for j in str(i):
-            r = int(j)**2
-            n += r
-            c += 1
-            i = n
-            if c == l:
-                if n not in s:
-                    s.add(n)
-                    print(n)
-                    print(i)
-                else:
-                    loop = False
+            if int(j) is not 0:
+                r = int(j)**2
+                n += r
+                c += 1
+                i = n
+                if c == l:
+                    if n not in s:
+                        s.add(n)
+                    else:
+                        loop = False
 print(count)
