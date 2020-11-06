@@ -1,6 +1,17 @@
-print(2**2+2**3+2**4)
+import math
 
-print(1415000011**2 %10)
+def divisorGenerator(n):
+    large_divisors = []
+    for i in range(1, int(math.sqrt(n) + 1)):
+        if n % i == 0:
+            yield i
+            if i*i != n:
+                if n/2 < 1000000:
+                    large_divisors.append(n / i)
+                else: 
+                    return 0
+    for divisor in reversed(large_divisors):
+        if divisor != n:
+            yield int(divisor)
 
-#1_2_3_4_5_6_7_8_9_0
-
+print(sum(list(divisorGenerator(2000000))))

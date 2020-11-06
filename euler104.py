@@ -24,5 +24,5 @@ while loop:
             print('Resultaat: ', count)
             loop = False
             sys.exit()
-    if count % 1000 == 0:
-        print('tussenstandje: ', count, ' nog een hondertjah bitchaes')
+    if count % 10000 == 0:
+        print('tussenstandje: ', count)
