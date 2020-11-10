@@ -24,7 +24,7 @@ def sieveOfEratosthenes(n):
 numbers = set(sieveOfEratosthenes(100000000))
 print('primes generated')
 
-def divisorGenerator(n):
+def divisorGenerator(n): 
     large_divisors = []
     for i in range(1, int(math.sqrt(n) + 1)):
         if n % i == 0:
