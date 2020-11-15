@@ -8,7 +8,7 @@ import sys
 
 numbers = set()
 for i in range(2,1000):
-    for j in range(2,20):
+    for j in range(2,10):
         numbers.add(pow(i,j))
 
 count = 0
