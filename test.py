@@ -1,2 +1,1 @@
-n = 1999
-print(str(n)[0])
+print(len(str(10**10)))
