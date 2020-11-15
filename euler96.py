@@ -4,8 +4,14 @@
 # The 6K text file, sudoku.txt (right click and 'Save Link/Target As...'), contains fifty different Su Doku puzzles ranging in difficulty, but all with unique solutions (the first puzzle in the file is the example above).
 # By solving all fifty puzzles find the sum of the 3-digit numbers found in the top left corner of each solution grid; for example, 483 is the 3-digit number found in the top left corner of the solution grid above.
 
-sudokus = []
-for item in open("euler96sudoku.txt", "r"):
-    sudokus.append(item.strip()) 
 
-print(sudokus)
+puzzles = []
+fileHandle = open("sudokutest.txt", "r")
+puzzle = fileHandle.readlines()
+print(puzzle)
+for line in range(len(puzzle)):
+    puzzle[line] = puzzle[line][:-1]
+    print(line)
+    puzzles.append(list(map(int,puzzle[line].split(","))))
+
+print(puzzles)
