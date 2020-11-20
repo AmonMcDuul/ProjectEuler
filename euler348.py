@@ -28,8 +28,11 @@ for square in squares:
     for cube in cubes:
         n = square+cube
         if n > 5000000:
-            if int(str(n)[::-1]) == n:
-                res.append(n)
-                if len((sorted(set([i for i in res if res.count(i)==4])))) == 5:
-                    print('Result: ', sum(sorted(set([i for i in res if res.count(i)==4]))))
-                    sys.exit()
+            if n < 1100000000:
+                if int(str(n)[::-1]) == n:
+                    res.append(n)
+                    if len((sorted(set([i for i in res if res.count(i)==4])))) == 5:
+                        print('Result: ', sum(sorted(set([i for i in res if res.count(i)==4]))))
+                        sys.exit()
+            else:
+                break
