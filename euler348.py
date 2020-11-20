@@ -24,7 +24,7 @@ res = []
 for square in squares:
     count+=1
     if count % 1000 == 0:
-        print('--Tussenstantje: ', count)
+        print('--Tussenstandje: ', count)
     for cube in cubes:
         n = square+cube
         if n > 5000000:
