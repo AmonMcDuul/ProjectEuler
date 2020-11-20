@@ -24,8 +24,6 @@ l = sieveOfEratosthenes(50000000)
 print('Sieve generated')
 
 result = 0
-count = 0
-print(len(l))
 for i in l:
     if i < 10000:
         for j in l:
@@ -34,5 +32,4 @@ for i in l:
                     result +=1
             if i*j > 10**8:
                 break
-
 print(result)
