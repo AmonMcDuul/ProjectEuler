@@ -27,14 +27,12 @@ result = 0
 count = 0
 print(len(l))
 for i in l:
-    count +=1
-    if count % 100000 == 0:
-        print(count, ' Tussenstandje ', result)
-    for j in l:
-        if i <= j:
-            if i*j < 10**8:
-                result +=1
-        if i*j > 10**8:
-            break
+    if i < 10000:
+        for j in l:
+            if i <= j:
+                if i*j < 10**8:
+                    result +=1
+            if i*j > 10**8:
+                break
 
 print(result)
