@@ -21,29 +21,3 @@ for i in l:
                     if str(r) == str(r)[::-1]:
                         s.add(r)
 print(sum(s))
-
-# result = 0
-
-# tussentijd = set()
-
-# for i in range(1,10**8):
-#     if i %1000000 == 0:   
-#         print('--Tussenstand: ', i)
-#     if str(i) == str(i)[::-1]:
-#         for j in l:
-#             if j < i:
-#                 if i not in tussentijd:
-#                     r = 0
-#                     for k in l:
-#                         if k >= j:
-#                             r += k
-#                             tussentijd.add(r)
-#                             if r == i:  
-#                                 result+=i
-#                             if r > i:
-#                                 break
-#                 else:
-#                     result+=i
-#             else:   
-#                 break
-# print(result)
