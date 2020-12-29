@@ -8,23 +8,18 @@
 # Find the sum of all Eulercoins.
 
 result = 0
-compare = 1504170715041707
-modulo = 4503599627370517
-max = 1504170715041707
-
+compare = 1504170715041708
+number = 0
 loop = True
-i = 0
 
-while loop: 
-	number = compare + max
-	number %= modulo
-	if number > max:
-		max = number
-	if number <= compare:
-		compare = number
-		result += number
-		print('nummer: ', number, ' eulercoin: ', result)
-	if number == 1:
+while loop:
+	number += 1504170715041707
+	num = number % 4503599627370517
+	if num < compare:
+		compare = num
+		result += num
+		print(len(str(num)), num, ' eulercoin', result)
+	if num == 1:
 		loop = False
 
-print(result+1504170715041707)
+print(result)

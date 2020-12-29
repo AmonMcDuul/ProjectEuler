@@ -9,32 +9,26 @@
 # 21: 1,3,7,21
 # 28: 1,2,4,7,14,28
 # We can see that 28 is the first triangle number to have over five divisors.
-
 # What is the value of the first triangle number to have over five hundred divisors?
 
-#triangle_numbers aan lijstje toevoegen
-#delers van triangleno in triangle_numbers > 500
+import math
 
-#Duurt nog veel te lang!!!!!! moet worden geoptimaliseerd
+def divisorGenerator(n):
+    large_divisors = []
+    for i in range(1, int(math.sqrt(n) + 1)):
+        if n % i == 0:
+            yield i
+            if i*i != n:
+                large_divisors.append(n // i)
+    for divisor in (large_divisors):
+        yield divisor
 
-import sys
-n = 90000
-j = 0
-delers = 0
+i = 0
+num = 0
 
-triangle_numbers = []
-
-for i in range(1,n):
-    j += i
-    triangle_numbers.append(j)
-
-
-for number in triangle_numbers: 
-    delers = 0
-    for x in range(1,number+1):
-        if number % x == 0:
-            delers += 1        
-            if 502 > delers > 498:
-                print(number)
-                sys.exit(0)
-    print(number, delers)
+while True:
+    i += 1
+    num += i
+    if len(list(divisorGenerator(num))) > 500:
+        print('result: ', num)
+        break

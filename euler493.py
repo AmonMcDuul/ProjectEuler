@@ -4,4 +4,5 @@
 
 from math import factorial
 
-print(7 * (1 - (factorial(60) / (factorial(20) * factorial(60 - 20))) / (factorial(70) / (factorial(20) * factorial(70 - 20)))))
+result = 7 * (1 - (factorial(60) / (factorial(20) * factorial(60 - 20))) / (factorial(70) / (factorial(20) * factorial(70 - 20))))
+print(str(result)[:11])
